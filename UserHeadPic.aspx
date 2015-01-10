@@ -31,7 +31,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:button id="BtnUserHeadPicPageUpload" runat="server" text="上傳頭像" clientidmode="static" />
+                        <asp:button id="BtnUserHeadPicPageUpload" runat="server" text="更新頭像" clientidmode="static" />
                     </td>
                     <td>
                         <asp:button id="BtnUserHeadPicPageCancel" runat="server" text="取消編輯" clientidmode="static" />

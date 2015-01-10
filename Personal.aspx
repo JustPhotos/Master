@@ -6,7 +6,7 @@
     <div class="personalBar">
         <div class="grayBar">
             <div class="wrapper">
-                <asp:Label ID="description" runat="server" Text="description"></asp:Label>
+                <asp:Label ID="description" runat="server" Text="description" ClientIDMode="Static"></asp:Label>
             </div>
         </div>
         <div class="whiteBar">
@@ -18,12 +18,6 @@
             </div>
         </div>
     </div>
-    <div class="block" id="photoID_">
-        <asp:Image ID="UserPhoto_" runat="server" CssClass="photo" />
-        <br />
-        <asp:Image ID="UserHeadPic_" runat="server" CssClass="user" />
-        <asp:Label ID="UserName_" runat="server" Text="[user name]" CssClass ="userName"></asp:Label>
-        <asp:Label ID="UserPhotoDescription_" runat="server" Text="[photo description]" CssClass="photoName"></asp:Label>
-    </div>
+    <asp:Panel ID="PlaceHolderDisplayPhoto" runat="server" ClientIDMode="Static"></asp:Panel>
 </asp:Content>
 

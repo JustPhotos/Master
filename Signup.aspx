@@ -66,24 +66,9 @@
                         <asp:RequiredFieldValidator ID="nameRequired" runat="server" ErrorMessage="請輸入姓名" ControlToValidate="TextBoxName" EnableClientScript="False" Font-Bold="True" Font-Size="X-Small" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
-			    <%--<tr>
-                    <td style="font-family: 微軟正黑體" class="auto-style1">
-                        描述
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                    </td>
-                    <td>
-                        <asp:TextBox ID="TextBoxDescription" runat="server" placeholder="輸入個人描述(150字以內)" Columns="50" Height="70px" Rows="3" TextMode="MultiLine" Width="650px" style="overflow: hidden; resize: none;" MaxLength="150" AutoCompleteType="Disabled"></asp:TextBox>
-					    <br />
-                        <asp:CustomValidator ID="descriptionValidator" runat="server" ErrorMessage="描述不能超過150字" Font-Bold="True" Font-Size="X-Small" ForeColor="Red" style="height: 13px; width: 188px" ControlToValidate="TextBoxDescription" EnableClientScript="False" Display="Dynamic"></asp:CustomValidator>
-                    </td>
-                </tr>--%>
                 <tr>
                     <td colspan="2">
                         <asp:Button ID="BtnSubmit" runat="server" Text="註冊" Font-Names="微軟正黑體" />
-                        <%--<asp:Button ID="BtnCancel" runat="server" Text="取消" Font-Names="微軟正黑體" />--%>
                     </td>
                 </tr>
             </table>

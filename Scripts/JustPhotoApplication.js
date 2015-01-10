@@ -22,6 +22,7 @@ function UploadPicturePageCheck() {
         alert('瀏覽器不支援本網站上傳方式');
     } else if (!$fileupload[0].files[0]) {
         // if select file
+        $('#UploadPageFileUpload')[0].value = '';
         alert('尚未選擇檔案');
     } else {
         // get select file
@@ -30,6 +31,7 @@ function UploadPicturePageCheck() {
         // first check file extension
         var fileType = gotFile.type;
         if (fileType != 'image/png' && fileType != 'image/jpeg' && fileType != 'image/jpg') {
+            $('#UploadPageFileUpload')[0].value = '';
             alert('檔案格式錯誤，需為jpeg、jpg、png檔案格式');
             return;
         }
@@ -37,8 +39,8 @@ function UploadPicturePageCheck() {
         // second check file size
         var fileSize = gotFile.size;
         if (fileSize > 5242880) {
-            alert('檔案大小超過上傳限制，請選擇5 MB以下之檔案');
             $('#UploadPageFileUpload')[0].value = '';
+            alert('檔案大小超過上傳限制，請選擇5 MB以下之檔案');
             return;
         }
 
@@ -101,6 +103,7 @@ function UserHeadPicPageCheck() {
     if (!$fileupload[0].files) {
         alert('瀏覽器不支援本網站上傳方式');
     } else if (!$fileupload[0].files[0]) {
+        $fileupload[0].value = '';
         // if select file
         //alert('尚未選擇檔案');
     } else {
@@ -110,6 +113,7 @@ function UserHeadPicPageCheck() {
         // first check file extension
         var fileType = gotFile.type;
         if (fileType != 'image/png' && fileType != 'image/jpeg' && fileType != 'image/jpg') {
+            $('#UserHeadPicPageFileUpload')[0].value = '';
             alert('檔案格式錯誤，需為jpeg、jpg、png檔案格式');
             return;
         }
@@ -117,8 +121,8 @@ function UserHeadPicPageCheck() {
         // second check file size
         var fileSize = gotFile.size;
         if (fileSize > 1048576) {
-            alert('檔案大小超過上傳限制，請選擇1 MB以下之檔案');
             $('#UserHeadPicPageFileUpload')[0].value = '';
+            alert('檔案大小超過上傳限制，請選擇1 MB以下之檔案');
             return;
         }
 

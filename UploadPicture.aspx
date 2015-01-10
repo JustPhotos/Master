@@ -26,9 +26,9 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="UploadPictureDescription" runat="server" AutoCompleteType="Disabled" Columns="50" Height="70px" MaxLength="150" Rows="3" style="overflow: hidden; resize: none;" TextMode="MultiLine" Width="650px"></asp:TextBox>
+                        <asp:TextBox ID="UploadPictureDescription" runat="server" AutoCompleteType="Disabled" Columns="50" Height="70px" MaxLength="50" Rows="3" style="overflow: hidden; resize: none;" TextMode="MultiLine" Width="650px"></asp:TextBox>
                         <br />
-                        <asp:CustomValidator ID="UploadPictureDescriptionValidator" runat="server" ControlToValidate="UploadPictureDescription" Display="Dynamic" EnableClientScript="False" ErrorMessage="描述不能超過150字" Font-Bold="True" Font-Size="X-Small" ForeColor="Red" style="height: 13px; width: 188px"></asp:CustomValidator>
+                        <asp:CustomValidator ID="UploadPictureDescriptionValidator" runat="server" ControlToValidate="UploadPictureDescription" Display="Dynamic" EnableClientScript="False" ErrorMessage="描述不能超過50字" Font-Bold="True" Font-Size="X-Small" ForeColor="Red" style="height: 13px; width: 188px"></asp:CustomValidator>
                     </td>
                 </tr>
                 <tr>

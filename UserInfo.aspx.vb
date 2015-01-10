@@ -66,7 +66,7 @@ Partial Class UserInfo
                         userinfo_TBoxEmail.Text = getEmail
                         userinfo_TBoxName.Text = getName
                         userinfo_TBoxDescription.Text = getDescription
-                        Session("jpt_user_description") = getDescription
+                        Session("jpt_memberDescrip") = getDescription
                     End If
                 Catch ex As Exception
                     Response.Write("<Script language='JavaScript'>alert('" & ex.Message & "');</Script>")
@@ -104,8 +104,11 @@ Partial Class UserInfo
             Exit Sub
         End If
 
-        If (newPWEmpty And newPWCEmpty And (newDescription = Session("jpt_user_description"))) Then
+        If (newPWEmpty And newPWCEmpty And (newDescription = Session("jpt_memberDescrip"))) Then
             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "popup", "alert('資料未更新，導向首頁...');window.location='Home.aspx';", True)
+            Exit Sub
+        ElseIf (newPWEmpty Or newPWCEmpty) And (newDescription = Session("jpt_memberDescrip")) Then
+            CustomValidatorPWCEmpty.IsValid = False
             Exit Sub
         Else
             Try
@@ -119,7 +122,7 @@ Partial Class UserInfo
 
                 jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@ID", System.Data.SqlDbType.Int))
                 jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@password", System.Data.SqlDbType.NVarChar, 30))
-                jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@description", System.Data.SqlDbType.NVarChar, 150))
+                jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@description", System.Data.SqlDbType.NVarChar, 50))
 
 
                 jptCommand.Parameters("@ID").Value = CType(Session("jpt_id").ToString(), Integer)
@@ -146,10 +149,8 @@ Partial Class UserInfo
 
                         Select Case getRetCode
                             Case 0
-                                Session.Remove("jpt_user_description")
+                                Session("jpt_memberDescrip") = newDescription
                                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "popup", "alert('資料更新成功！返回首頁');window.location='Home.aspx';", True)
-                                'Response.Write("<Script language='JavaScript'>alert('資料更新成功！');</Script>")
-                                'Response.Redirect("~/Default.aspx")
                             Case 1
                                 Response.Write("<Script language='JavaScript'>alert('資料更新失敗！');</Script>")
                             Case Else
@@ -176,7 +177,7 @@ Partial Class UserInfo
     End Sub
 
     Protected Sub userinfo_TBoxDescriptionValid_ServerValidate(source As Object, args As ServerValidateEventArgs) Handles userinfo_TBoxDescriptionValid.ServerValidate
-        If userinfo_TBoxDescription.Text.Length > 150 Then
+        If userinfo_TBoxDescription.Text.Length > 50 Then
             args.IsValid = False
             Exit Sub
         End If

@@ -176,7 +176,7 @@ Partial Class UserHeadPic
                         If retCode = "0" Then
                             Session("jpt_memberHeadPic") = completeFileName
                             Session("jpt_memberHeadPicSelected") = "0"
-                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "popup", "alert('檔案上傳成功，導向個人頁面...');window.location='Personal.aspx';", True)
+                            ScriptManager.RegisterStartupScript(Me, Me.GetType(), "popup", "alert('頭像更新成功，導向個人頁面...');window.location='Personal.aspx';", True)
                             'Response.Write("<Script language='JavaScript'>alert('檔案上傳成功');</Script>")
                         Else
                             Response.Write("<Script language='JavaScript'>alert('檔案存入資料庫出錯');</Script>")

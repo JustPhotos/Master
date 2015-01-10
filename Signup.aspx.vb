@@ -26,13 +26,6 @@ Partial Class Signup
         End If
     End Sub
 
-    'Protected Sub descriptionValidator_ServerValidate(source As Object, args As ServerValidateEventArgs) Handles descriptionValidator.ServerValidate
-    '    If TextBoxDescription.Text.Length > 150 Then
-    '        args.IsValid = False
-    '        Exit Sub
-    '    End If
-    'End Sub
-
     Protected Sub BtnSubmit_Click(sender As Object, e As EventArgs) Handles BtnSubmit.Click
         'get each information from textbox
         Dim account As String = TextBoxAccount.Text
@@ -40,7 +33,6 @@ Partial Class Signup
         Dim passwordConfirm As String = TextBoxPasswordConfirm.Text
         Dim email As String = TextBoxEmail.Text
         Dim name As String = TextBoxName.Text
-        'Dim description As String = TextBoxDescription.Text
         Dim headPictureFileNmae As String = ""
 
         Dim checkValidator As Boolean = accountRequired.IsValid And accountValidator.IsValid And pwValidator.IsValid And pwRequired.IsValid And pwcRequired.IsValid And pwcCompare.IsValid And _
@@ -48,38 +40,6 @@ Partial Class Signup
         If Not checkValidator Then
             Exit Sub
         End If
-
-        'process upload head picture
-        'Dim path As String = Server.MapPath("~\")
-        'Dim fileOK As Boolean = False
-
-        'If FileUploadHeadPic.HasFile Then
-        '    Dim allowedExtensions As String() = {".jpg", ".jpeg", ".png", ".gif"}
-        '    Dim fileExtension As String = System.IO.Path.GetExtension(FileUploadHeadPic.FileName).ToLower()
-
-        '    For i As Integer = 0 To allowedExtensions.Length - 1
-        '        If fileExtension = allowedExtensions(i) Then
-        '            fileOK = True
-        '        End If
-        '    Next
-        '    If fileOK Then
-        '        Try
-        '            'rename file
-        '            headPictureFileNmae = System.IO.Path.GetFileNameWithoutExtension(FileUploadHeadPic.FileName)
-        '            headPictureFileNmae = account & "_jptDB_hdp" & fileExtension
-
-        '            FileUploadHeadPic.PostedFile.SaveAs(path & headPictureFileNmae)
-        '            ImageHeadPicture.ImageUrl = headPictureFileNmae
-        '            'Response.Write("<Script language='JavaScript'>alert('檔案上傳成功');</Script>")
-        '        Catch ex As Exception
-        '            Response.Write("<Script language='JavaScript'>alert('檔案上傳失敗" & ex.Message & "');</Script>")
-        '            Exit Sub
-        '        End Try
-        '    Else
-        '        Response.Write("<Script language='JavaScript'>alert('不支援圖片格式以外之檔案上傳');</Script>")
-        '        Exit Sub
-        '    End If
-        'End If
 
         'save sign up information to database
         Dim conn1 As System.Data.SqlClient.SqlConnection
@@ -104,7 +64,7 @@ Partial Class Signup
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@password", System.Data.SqlDbType.NVarChar, 30))
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@name", System.Data.SqlDbType.NVarChar, 30))
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@email", System.Data.SqlDbType.NVarChar, 50))
-        cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@description", System.Data.SqlDbType.NVarChar, 150))
+        cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@description", System.Data.SqlDbType.NVarChar, 50))
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@headPicture", System.Data.SqlDbType.NVarChar, 25))
 
         cmd1.Parameters("@ID").Value = System.DBNull.Value
@@ -124,8 +84,6 @@ Partial Class Signup
             Select Case getRetCode
                 Case 0
                     ScriptManager.RegisterStartupScript(Me, Me.GetType(), "popup", "alert('註冊成功！返回首頁');window.location='Default.aspx';", True)
-                    'Response.Write("<Script language='JavaScript'>alert('註冊成功！');</Script>")
-                    'Response.Redirect("~/Default.aspx")
                 Case 1
                     Response.Write("<Script language='JavaScript'>alert('帳號已經存在，請修改！');</Script>")
                 Case 2
@@ -141,10 +99,4 @@ Partial Class Signup
         dr1.Close()
         conn1.Close()
     End Sub
-
-    'Protected Sub BtnCancel_Click(sender As Object, e As EventArgs) Handles BtnCancel.Click
-    '    Response.Redirect("~\Default.aspx")
-    'End Sub
-
-
 End Class

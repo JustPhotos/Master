@@ -1,5 +1,4 @@
-﻿
-Partial Class Personal
+﻿Partial Class Personal
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -48,8 +47,13 @@ Partial Class Personal
             jptCommand.CommandType = Data.CommandType.StoredProcedure
             jptCommand.CommandText = "GETPERSONALPHOTOSBYID"
 
+            '@ID int
+            '@Range int
+
             jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@ID", System.Data.SqlDbType.Int))
+            jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@Range", System.Data.SqlDbType.Int))
             jptCommand.Parameters("@ID").Value = CType(Session("jpt_id").ToString(), Integer)
+            jptCommand.Parameters("@Range").Value = 10
 
 
             Dim jptDataReader As System.Data.SqlClient.SqlDataReader = Nothing
@@ -58,9 +62,57 @@ Partial Class Personal
                 jptConn.Open()
                 jptDataReader = jptCommand.ExecuteReader
 
-                If jptDataReader.Read() Then
-                    
+                'file saved path
+                Dim userPhotoPath As String = "~/img/urspics/" + Session("jpt_id") + "/"
+
+                Dim userHeadPicPath As String = "~/img/guest_35_35.png"
+                If Not Session("jpt_memberHeadPic") = "" Then
+                    userHeadPicPath = "~/img/hdp/" + Session("jpt_id") + "/" + Session("jpt_memberHeadPic")
                 End If
+                Dim userName As String = Session("jpt_memberName")
+
+                While jptDataReader.Read()
+                    Dim photoID As String = jptDataReader(0).ToString()
+                    Dim photoFileName As String = jptDataReader(1).ToString()
+                    Dim photoDescription As String = jptDataReader(2).ToString()
+
+                    Dim Panel_photoBlockDiv As HtmlGenericControl = New HtmlGenericControl("div")
+                    Panel_photoBlockDiv.ID = "photoBlockID_" + photoID
+                    Panel_photoBlockDiv.Attributes.Add("class", "block")
+                    Panel_photoBlockDiv.ClientIDMode = UI.ClientIDMode.Static
+
+                    Dim Panel_photoImage As Image = New Image
+                    Panel_photoImage.ID = "photoID_" + photoID
+                    Panel_photoImage.CssClass = "photo"
+                    Panel_photoImage.ClientIDMode = UI.ClientIDMode.Static
+                    Panel_photoImage.ImageUrl = userPhotoPath + photoFileName
+
+                    Dim Panel_userHeadPic As Image = New Image
+                    Panel_userHeadPic.ID = "userHeadPic_" + Session("jpt_id")
+                    Panel_userHeadPic.CssClass = "user"
+                    Panel_userHeadPic.ClientIDMode = UI.ClientIDMode.Static
+                    Panel_userHeadPic.ImageUrl = userHeadPicPath
+
+                    Dim Panel_userName As Label = New Label
+                    Panel_userName.ID = "userName_" + Session("jpt_id")
+                    Panel_userName.CssClass = "userName"
+                    Panel_userName.ClientIDMode = UI.ClientIDMode.Static
+                    Panel_userName.Text = userName
+
+                    Dim Panel_photoDescription As Label = New Label
+                    Panel_photoDescription.ID = "photoDescription_" + photoID
+                    Panel_photoDescription.CssClass = "photoName"
+                    Panel_photoDescription.ClientIDMode = UI.ClientIDMode.Static
+                    Panel_photoDescription.Text = photoDescription
+
+                    Panel_photoBlockDiv.Controls.Add(Panel_photoImage)
+                    Panel_photoBlockDiv.Controls.Add(New LiteralControl("<br />"))
+                    Panel_photoBlockDiv.Controls.Add(Panel_userHeadPic)
+                    Panel_photoBlockDiv.Controls.Add(Panel_userName)
+                    Panel_photoBlockDiv.Controls.Add(Panel_photoDescription)
+
+                    PlaceHolderDisplayPhoto.Controls.Add(Panel_photoBlockDiv)
+                End While
             Catch ex As Exception
                 Response.Write("<Script language='JavaScript'>alert('" & ex.Message & "');</Script>")
             Finally

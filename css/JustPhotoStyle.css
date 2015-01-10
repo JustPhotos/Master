@@ -136,14 +136,15 @@ footer p {
     height: 230px;
 }
 .personalBar #description {
-    color: #333;
+    color: #fff;
     font-family: Arial , '微軟正黑體';
-    font-size:1em;
-    font-weight:normal;
-    position:absolute;
-    overflow:hidden;
-    bottom:741px;
-    left: 86px;
+    font-size: 16px;
+    font-weight: normal;
+    position: relative;
+    top: 60px;
+    width: 70%;
+    height: 70px;
+    display: inline-block;
 }
 .personalBar .personBlock {
     height: 120px;

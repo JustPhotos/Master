@@ -31,7 +31,7 @@ Partial Class UploadPicture
     End Sub
 
     Protected Sub UploadPictureDescriptionValidator_ServerValidate(source As Object, args As ServerValidateEventArgs) Handles UploadPictureDescriptionValidator.ServerValidate
-        If UploadPictureDescription.Text.Length > 150 Then
+        If UploadPictureDescription.Text.Length > 50 Then
             args.IsValid = False
             Exit Sub
         End If
@@ -98,7 +98,7 @@ Partial Class UploadPicture
                     '@userId int
 
                     jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@name", System.Data.SqlDbType.NVarChar, 60))
-                    jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@picDescription", System.Data.SqlDbType.NVarChar, 150))
+                    jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@picDescription", System.Data.SqlDbType.NVarChar, 50))
                     jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@uplaodDatetime", System.Data.SqlDbType.DateTime))
                     jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@userId", System.Data.SqlDbType.Int))
 
