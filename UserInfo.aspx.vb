@@ -61,7 +61,6 @@ Partial Class UserInfo
                         Dim getDescription As String = jptDataReader(3).ToString()
 
                         'display unable to edit data and able to edit data
-                        'unable
                         userinfo_TBoxAccount.Text = getAccount
                         userinfo_TBoxEmail.Text = getEmail
                         userinfo_TBoxName.Text = getName
@@ -121,7 +120,7 @@ Partial Class UserInfo
                 jptCommand.CommandText = "UPDATEUSERINFOBYID"
 
                 jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@ID", System.Data.SqlDbType.Int))
-                jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@password", System.Data.SqlDbType.NVarChar, 30))
+                jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@password", System.Data.SqlDbType.NVarChar, 32))
                 jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@description", System.Data.SqlDbType.NVarChar, 50))
 
 
@@ -132,7 +131,7 @@ Partial Class UserInfo
                     ' pw not change
                     jptCommand.Parameters("@password").Value = System.DBNull.Value
                 Else
-                    jptCommand.Parameters("@password").Value = newPassword
+                    jptCommand.Parameters("@password").Value = GetMd5Hash(System.Security.Cryptography.MD5.Create(), newPassword)
                 End If
                 jptCommand.Parameters("@description").Value = newDescription
 
@@ -192,4 +191,17 @@ Partial Class UserInfo
             Exit Sub
         End If
     End Sub
+
+    Public Function GetMd5Hash(ByVal md5Hash As System.Security.Cryptography.MD5, ByVal input As String) As String
+        Dim data As Byte() = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input))
+
+        Dim sBuilder As New StringBuilder()
+
+        Dim i As Integer
+        For i = 0 To data.Length - 1
+            sBuilder.Append(data(i).ToString("X2"))
+        Next i
+
+        Return sBuilder.ToString()
+    End Function
 End Class

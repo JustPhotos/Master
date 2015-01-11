@@ -43,8 +43,6 @@ Partial Class Home
             jptCommand.CommandType = Data.CommandType.StoredProcedure
             jptCommand.CommandText = "GETPHOTOSFROMDBBYRANGE"
 
-            '@Range int
-
             jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@Range", System.Data.SqlDbType.Int))
             jptCommand.Parameters("@Range").Value = 15
 
@@ -56,13 +54,6 @@ Partial Class Home
                 jptDataReader = jptCommand.ExecuteReader
 
                 While jptDataReader.Read()
-                    '[dbjpt_Photos].[ID], 
-                    '[dbjpt_Photos].[name], 
-                    '[dbjpt_Photos].[picDescription], 
-                    '[dbjpt_Photos].[user], 
-                    '[dbjpt_Users].[name], 
-                    '[dbjpt_Users].[headPicture]
-
                     Dim photoID As String = jptDataReader(0).ToString()
                     Dim photoFileName As String = jptDataReader(1).ToString()
                     Dim photoDescription As String = jptDataReader(2).ToString()

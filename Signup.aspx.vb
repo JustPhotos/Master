@@ -36,7 +36,7 @@ Partial Class Signup
         Dim headPictureFileNmae As String = ""
 
         Dim checkValidator As Boolean = accountRequired.IsValid And accountValidator.IsValid And pwValidator.IsValid And pwRequired.IsValid And pwcRequired.IsValid And pwcCompare.IsValid And _
-                emailRequired.IsValid And emailValidator.IsValid And nameRequired.IsValid ' And descriptionValidator.IsValid
+                emailRequired.IsValid And emailValidator.IsValid And nameRequired.IsValid
         If Not checkValidator Then
             Exit Sub
         End If
@@ -51,17 +51,9 @@ Partial Class Signup
         cmd1.CommandType = Data.CommandType.StoredProcedure
         cmd1.CommandText = "CREATEACCOUNT"
 
-        '@ID int,
-        '@account nvarchar(15),
-        '@password nvarchar(30),
-        '@name nvarchar(30),
-        '@email nvarchar(50),
-        '@description nvarchar(150),
-        '@headPicture nvarchar(25),
-
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@ID", System.Data.SqlDbType.Int))
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@account", System.Data.SqlDbType.NVarChar, 15))
-        cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@password", System.Data.SqlDbType.NVarChar, 30))
+        cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@password", System.Data.SqlDbType.NVarChar, 32))
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@name", System.Data.SqlDbType.NVarChar, 30))
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@email", System.Data.SqlDbType.NVarChar, 50))
         cmd1.Parameters.Add(New System.Data.SqlClient.SqlParameter("@description", System.Data.SqlDbType.NVarChar, 50))
@@ -69,7 +61,7 @@ Partial Class Signup
 
         cmd1.Parameters("@ID").Value = System.DBNull.Value
         cmd1.Parameters("@account").Value = account
-        cmd1.Parameters("@password").Value = password
+        cmd1.Parameters("@password").Value = GetMd5Hash(System.Security.Cryptography.MD5.Create(), password)
         cmd1.Parameters("@name").Value = name
         cmd1.Parameters("@email").Value = email
         cmd1.Parameters("@description").Value = ""
@@ -99,4 +91,17 @@ Partial Class Signup
         dr1.Close()
         conn1.Close()
     End Sub
+
+    Public Function GetMd5Hash(ByVal md5Hash As System.Security.Cryptography.MD5, ByVal input As String) As String
+        Dim data As Byte() = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input))
+
+        Dim sBuilder As New StringBuilder()
+
+        Dim i As Integer
+        For i = 0 To data.Length - 1
+            sBuilder.Append(data(i).ToString("X2"))
+        Next i
+
+        Return sBuilder.ToString()
+    End Function
 End Class

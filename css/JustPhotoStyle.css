@@ -91,7 +91,6 @@ header #headPicture {
     border-radius: 35px;
     border: none;
     margin: 7px 10px;
-    /*padding: 7px 10px;*/
 }
 header #jpt_masterPageSignup, #jpt_masterPageLogin, #jpt_masterPageAccount, #jpt_masterPagePersonal, #jpt_masterPageUpload, #jpt_masterPageLogout {
     position:relative;
@@ -228,9 +227,7 @@ footer p {
     margin-top: 10%;
     margin-left : auto;
     margin-right : auto;
-    /*margin:13% auto;*/
     font-family:Arial;
-    /*padding:10px 15px 30px 15px;*/
     background:#fff;
 }
 #loginBlock tr td{
@@ -245,7 +242,6 @@ footer p {
 #loginBlock input {
     width:160px;
     line-height:30px;
-    /*padding:0px 7px;*/
 }
 #loginBlock input[type="submit"] {
     width:100%;
@@ -266,7 +262,6 @@ footer p {
     height:auto;
     margin:7% auto;
     font-family:Arial;
-    /*padding:10px 15px 30px 15px;*/
     background:#fff;
 }
 #uploadBlock th {
@@ -287,8 +282,6 @@ footer p {
 
 /*Default page ad block*/
 #ad {
-    /*padding-bottom: 50px;*/
-    /*background-image: url("../img/dpgbg/jpt_bg_c_1.jpg");*/
     background-image: url('../img/dpgbg/jpt_bg_5.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -299,7 +292,6 @@ footer p {
 }
 #ad_contents {
     width: 50%;
-    /*height: 50%;*/
     height:auto;
     margin:10% auto;
     background-color:rgba(0, 0, 0, 0.6);
@@ -308,21 +300,16 @@ footer p {
     padding: 2% 1%;
 }
 #slogan {
-    /*margin:0px auto;*/
     text-align:center;
     color: #fff;
     font-size:50pt;
     font-family: 微軟正黑體, Arial;
     font-weight:bold;
-    /*padding-top: 40px;*/
     padding: 2% 0px 5% 0px;
     display:inline-block;
 }
 #ad_btnpanel {
     width: 35%;
-    /*margin-left:auto;
-    margin-right:auto;
-    margin-top: 15%;*/
     margin:2% auto;
 }
 .btnBlock {
@@ -382,9 +369,7 @@ footer p {
     margin-top: 6%;
     margin-left : auto;
     margin-right : auto;
-    /*margin:13% auto;*/
     font-family:Arial;
-    /*padding:10px 15px 30px 15px;*/
     background:#fff;
 }
 
@@ -398,7 +383,6 @@ footer p {
 .signupStyle input {
     width:160px;
     line-height:30px;
-    /*padding:0px 7px;*/
 }
 
 .signupStyle tr td{
@@ -440,9 +424,7 @@ footer p {
     margin-top: 7%;
     margin-left : auto;
     margin-right : auto;
-    /*margin:13% auto;*/
     font-family:Arial;
-    /*padding:10px 15px 30px 15px;*/
     background:#fff;
 }
 
@@ -456,7 +438,6 @@ footer p {
 .personalStyle input {
     width:160px;
     line-height:30px;
-    /*padding:0px 7px;*/
 }
 
 .personalStyle tr td{
@@ -496,9 +477,7 @@ footer p {
     margin-top: 10px;
     margin-left : auto;
     margin-right : auto;
-    /*margin:13% auto;*/
     font-family:Arial;
-    /*padding:10px 15px 30px 15px;*/
     background:#fff;
 }
 
@@ -512,7 +491,6 @@ footer p {
 .UploadPictureStyle input {
     width:160px;
     line-height:30px;
-    /*padding:0px 7px;*/
 }
 
 .UploadPictureStyle tr td{
@@ -547,24 +525,6 @@ footer p {
     height:50px;
     border-bottom:2px solid #eee;
 }
-
-/*.uploadHeadBlock input {
-    width:160px;
-    line-height:30px;
-}
-
-.uploadHeadBlock input[type="submit"] {
-    width:50%;
-    background:#bbb;
-    border:none;
-    line-height: 30px;
-    font-size: 17px;
-    color: #333;
-}
-.uploadHeadBlock input[type="submit"]:hover {
-    background:#2cb72a;
-    color:#fff;
-}*/
 #BtnUserHeadPicPageReset {
     width:100%;
     margin: 5px 0px 5px 0px;
@@ -592,4 +552,8 @@ footer p {
 #BtnUserHeadPicPageUpload:hover, #BtnUserHeadPicPageCancel:hover {
     background-color:#2cb72a;
     color:#fff;
+}
+
+#PlaceHolderHomePageDiaplay {
+    margin-top: 5%;
 }

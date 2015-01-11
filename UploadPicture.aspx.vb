@@ -92,11 +92,6 @@ Partial Class UploadPicture
                     jptCommand.CommandType = Data.CommandType.StoredProcedure
                     jptCommand.CommandText = "UPLOADPICTURE"
 
-                    '@name nvarchar(60),
-                    '@picDescription nvarchar(150),
-                    '@uplaodDatetime datetime,
-                    '@userId int
-
                     jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@name", System.Data.SqlDbType.NVarChar, 60))
                     jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@picDescription", System.Data.SqlDbType.NVarChar, 50))
                     jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@uplaodDatetime", System.Data.SqlDbType.DateTime))
@@ -117,7 +112,6 @@ Partial Class UploadPicture
                             Dim retCode As String = jptDataReader(0).ToString()
                             If retCode = "0" Then
                                 ScriptManager.RegisterStartupScript(Me, Me.GetType(), "popup", "alert('檔案上傳成功，導向個人頁面...');window.location='Personal.aspx';", True)
-                                'Response.Write("<Script language='JavaScript'>alert('檔案上傳成功');</Script>")
                             Else
                                 Response.Write("<Script language='JavaScript'>alert('檔案存入資料庫出錯');</Script>")
                             End If

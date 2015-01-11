@@ -8,7 +8,6 @@
             <div id="ad_contents">
                 <div id="slogan">您未登入，請登入...</div>
                 <div id="ad_btnpanel">
-                    <%--<asp:HyperLink ID="jpt_notSigninPageLogin" runat="server" NavigateUrl="~/Login.aspx" CssClass="btn btnNotLogin">登入</asp:HyperLink>--%>
                     <asp:Button ID="jpt_notSigninPageLogin" runat="server" Text="登入" CssClass="btn btnNotLogin"/>
                 </div>
             </div>

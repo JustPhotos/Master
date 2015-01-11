@@ -19,17 +19,11 @@
             <div class="wrapper">
                 <asp:Button ID="mpHeadLogoBtn" runat="server" CssClass="logo" />
                 <span id="accOpt">
-                    <%--<asp:Image ID="headPicture" runat="server" ImageUrl="~/img/guest_35_35.png" Height="35px" Width="35px" />--%>
                     <asp:ImageButton ID="headPicture" runat="server" Height="35px" Width="35px" ImageUrl="~/img/guest_35_35_tran.png" Visible="True" />
                     <%-- before sign in --%>
-                    <%--<asp:HyperLink ID="jpt_masterPageSignup" runat="server" NavigateUrl="~/Signup.aspx" Visible="True">註冊</asp:HyperLink>
-                    <asp:HyperLink ID="jpt_masterPageLogin" runat="server" NavigateUrl="~/Login.aspx" Visible="True">登入</asp:HyperLink>--%>
                     <asp:Button ID="jpt_masterPageSignup" runat="server" Text="註冊" />
                     <asp:Button ID="jpt_masterPageLogin" runat="server" Text="登入" />
                     <%-- after sign in --%>
-                    <%--<asp:HyperLink ID="jpt_masterPageAccount" runat="server" Visible="False" NavigateUrl="~/UserInfo.aspx">[account]</asp:HyperLink>
-                    <asp:HyperLink ID="jpt_masterPagePersonal" runat="server" Visible="False" NavigateUrl="~/Personal.aspx">個人頁面</asp:HyperLink>
-                    <asp:HyperLink ID="jpt_masterPageUpload" runat="server" Visible="False">上傳</asp:HyperLink>--%>
                     <asp:Button ID="jpt_masterPageAccount" runat="server" Text="[account]" Visible="False" />
                     <asp:Button ID="jpt_masterPagePersonal" runat="server" Text="個人頁面" Visible="False" />
                     <asp:Button ID="jpt_masterPageUpload" runat="server" Text="上傳" Visible="False" />

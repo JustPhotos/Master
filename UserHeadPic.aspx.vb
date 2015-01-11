@@ -47,7 +47,6 @@ Partial Class UserHeadPic
 
             jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@ID", System.Data.SqlDbType.Int))
             jptCommand.Parameters("@ID").Value = CType(Session("jpt_id").ToString(), Integer)
-            'jptCommand.Parameters("@ID").Value = 2
 
             Dim jptDataReader As System.Data.SqlClient.SqlDataReader = Nothing
 
@@ -154,16 +153,11 @@ Partial Class UserHeadPic
                 jptCommand.CommandType = Data.CommandType.StoredProcedure
                 jptCommand.CommandText = "UPLOADHEADPICTURE"
 
-                '@ID int,
-                '@headPicture nvarchar(25)
-
                 jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@ID", System.Data.SqlDbType.Int))
                 jptCommand.Parameters.Add(New System.Data.SqlClient.SqlParameter("@headPicture", System.Data.SqlDbType.NVarChar, 25))
 
                 jptCommand.Parameters("@ID").Value = CType(userId, Integer)
                 jptCommand.Parameters("@headPicture").Value = completeFileName
-
-
 
                 Dim jptDataReader As System.Data.SqlClient.SqlDataReader = Nothing
 
@@ -177,7 +171,6 @@ Partial Class UserHeadPic
                             Session("jpt_memberHeadPic") = completeFileName
                             Session("jpt_memberHeadPicSelected") = "0"
                             ScriptManager.RegisterStartupScript(Me, Me.GetType(), "popup", "alert('頭像更新成功，導向個人頁面...');window.location='Personal.aspx';", True)
-                            'Response.Write("<Script language='JavaScript'>alert('檔案上傳成功');</Script>")
                         Else
                             Response.Write("<Script language='JavaScript'>alert('檔案存入資料庫出錯');</Script>")
                         End If
