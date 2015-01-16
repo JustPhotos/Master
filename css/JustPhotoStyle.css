@@ -190,7 +190,7 @@ footer p {
     height: auto;
     border: 2px solid #000;
     margin: 50px auto;
-    padding: 40px;
+    padding: 20px 40px 40px 40px;
     box-sizing:border-box;
     background:#fff;
 }
@@ -556,4 +556,13 @@ footer p {
 
 #PlaceHolderHomePageDiaplay {
     margin-top: 5%;
+}
+
+.btnDelectPhoto {
+    width:20px;
+    height:20px;
+    float: right;
+    top: -10px;
+    right: -30px;
+    position: relative;
 }

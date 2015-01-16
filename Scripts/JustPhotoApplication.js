@@ -161,3 +161,8 @@ function UserHeadPicPageReset() {
     // change display
     $('#UserHeadPicPageTempPreview').attr('src', '/img/guset_448_448.png');
 }
+
+// function to delete div from client
+function deletePhotoDivById(divTagId) {
+    $('#' + divTagId).remove();
+}

@@ -75,25 +75,21 @@ Partial Class Home
                     Panel_photoBlockDiv.ClientIDMode = UI.ClientIDMode.Static
 
                     Dim Panel_photoImage As Image = New Image
-                    Panel_photoImage.ID = "hm_photoID_" + photoID
                     Panel_photoImage.CssClass = "photo"
                     Panel_photoImage.ClientIDMode = UI.ClientIDMode.Static
                     Panel_photoImage.ImageUrl = userPhotoPath + photoFileName
 
                     Dim Panel_userHeadPic As Image = New Image
-                    Panel_userHeadPic.ID = "hm_userHeadPic_" + photoUserID
                     Panel_userHeadPic.CssClass = "user"
                     Panel_userHeadPic.ClientIDMode = UI.ClientIDMode.Static
                     Panel_userHeadPic.ImageUrl = userHeadPicPath
 
                     Dim Panel_userName As Label = New Label
-                    Panel_userName.ID = "hm_userName_" + photoUserID
                     Panel_userName.CssClass = "userName"
                     Panel_userName.ClientIDMode = UI.ClientIDMode.Static
                     Panel_userName.Text = userName
 
                     Dim Panel_photoDescription As Label = New Label
-                    Panel_photoDescription.ID = "hm_photoDescription_" + photoID
                     Panel_photoDescription.CssClass = "photoName"
                     Panel_photoDescription.ClientIDMode = UI.ClientIDMode.Static
                     Panel_photoDescription.Text = photoDescription
